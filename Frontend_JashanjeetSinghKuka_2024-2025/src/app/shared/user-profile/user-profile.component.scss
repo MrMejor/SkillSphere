@@ -1,0 +1,179 @@
+.user-profile-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Inter', sans-serif;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  h2 {
+    color: #2c3e50;
+    font-weight: 600;
+  }
+}
+
+.profile-image-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.profile-photo-container {
+  position: relative;
+  text-align: center;
+  
+  .profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #f8f9fa;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .default-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid #f8f9fa;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    
+    i {
+      font-size: 3rem;
+      color: #6c757d;
+    }
+  }
+  
+  .change-photo-btn {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4e73df;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: #3a5ccc;
+    }
+    
+    i {
+      margin-right: 5px;
+    }
+    
+    .file-input {
+      display: none;
+    }
+  }
+}
+
+.user-info-section {
+  margin-bottom: 2rem;
+  
+  .info-item {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    .info-label {
+      font-weight: 600;
+      color: #495057;
+      min-width: 100px;
+    }
+    
+    .info-value {
+      flex-grow: 1;
+      color: #6c757d;
+    }
+    
+    .edit-btn {
+      background: none;
+      border: none;
+      color: #4e73df;
+      cursor: pointer;
+      margin-left: 10px;
+      font-size: 1rem;
+      
+      &:hover {
+        color: #3a5ccc;
+      }
+    }
+    
+    input, textarea {
+      flex-grow: 1;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 0.3rem 0.5rem;
+    }
+    
+    textarea {
+      min-height: 60px;
+      resize: vertical;
+    }
+  }
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  
+  .btn {
+    padding: 0.7rem;
+    border-radius: 6px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    
+    i {
+      margin-right: 8px;
+    }
+  }
+  
+  .btn-save {
+    background: #4e73df;
+    color: white;
+    border: none;
+    
+    &:hover {
+      background: #3a5ccc;
+    }
+    
+    &:disabled {
+      background: #e9ecef;
+      color: #adb5bd;
+      cursor: not-allowed;
+    }
+  }
+  
+  .btn-password {
+    background: #f8f9fa;
+    color: #495057;
+    border: 1px solid #dee2e6;
+    
+    &:hover {
+      background: #e9ecef;
+    }
+  }
+}

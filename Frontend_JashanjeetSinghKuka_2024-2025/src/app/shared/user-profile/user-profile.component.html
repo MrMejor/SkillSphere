@@ -1,0 +1,72 @@
+<div class="profile-background">
+<div class="user-profile-container">
+  <div class="profile-header">
+    <h2>My Profile</h2>
+  </div>
+
+  <!-- Profile Image Section -->
+  <div class="profile-image-section">
+    <div class="profile-photo-container">
+      <img *ngIf="profileImage" [src]="profileImage" alt="Profile Picture" class="profile-photo">
+      <div *ngIf="!profileImage" class="default-photo">
+        <i class="fas fa-user"></i>
+      </div>
+      
+      <label class="change-photo-btn">
+        <i class="fas fa-camera"></i> Change Photo
+        <input type="file" accept="image/*" (change)="onFileSelected($event)" class="file-input">
+      </label>
+    </div>
+  </div>
+
+  <!-- User Info Section -->
+  <div class="user-info-section">
+    <div class="info-item">
+      <span class="info-label">Username:</span>
+      <span class="info-value">{{ user?.username }}</span>
+    </div>
+    
+    <div class="info-item">
+      <span class="info-label">First Name:</span>
+      <span *ngIf="!editingFirstName" class="info-value">{{ user?.firstName }}</span>
+      <input *ngIf="editingFirstName" type="text" [(ngModel)]="user.firstName" class="form-control">
+      <button class="edit-btn" (click)="toggleEdit('firstName')">
+        <i class="fas" [class.fa-edit]="!editingFirstName" [class.fa-check]="editingFirstName"></i>
+      </button>
+    </div>
+    
+    <div class="info-item">
+      <span class="info-label">Last Name:</span>
+      <span *ngIf="!editingLastName" class="info-value">{{ user?.lastName }}</span>
+      <input *ngIf="editingLastName" type="text" [(ngModel)]="user.lastName" class="form-control">
+      <button class="edit-btn" (click)="toggleEdit('lastName')">
+        <i class="fas" [class.fa-edit]="!editingLastName" [class.fa-check]="editingLastName"></i>
+      </button>
+    </div>
+    
+    <div class="info-item">
+      <span class="info-label">Role:</span>
+      <span class="info-value">{{ user?.role }}</span>
+    </div>
+    
+    <div class="info-item">
+      <span class="info-label">Address:</span>
+      <span *ngIf="!editingAddress" class="info-value">{{ user?.address }}</span>
+      <textarea *ngIf="editingAddress" [(ngModel)]="user.address" class="form-control"></textarea>
+      <button class="edit-btn" (click)="toggleEdit('address')">
+        <i class="fas" [class.fa-edit]="!editingAddress" [class.fa-check]="editingAddress"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="action-buttons">
+    <button class="btn btn-save" (click)="saveChanges()" [disabled]="!isEditing">
+      <i class="fas fa-save"></i> Save Changes
+    </button>
+    <button class="btn btn-password" (click)="navigateToChangePassword()">
+      <i class="fas fa-key"></i> Change Password
+    </button>
+  </div>
+</div>
+</div>

@@ -1,0 +1,60 @@
+<div class="modal-header">
+  <h4 class="modal-title d-flex flex-column align-items-center">Add New Post</h4>
+</div>
+<div class="modal-body">
+  <form [formGroup]="postForm" (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name" required>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" formControlName="description" required></textarea>
+    </div>
+
+    <!-- Image part -->
+    <!-- <div class="mb-3">
+      <label for="image" class="form-label">Image URL</label>
+      <input type="text" class="form-control" id="image" formControlName="image" required>
+    </div> -->
+    <div class="mb-3">
+      <label for="image" class="form-label">Image</label>
+      <input type="file" class="form-control" (change)="onFileChange($event)" accept="image/*" required>
+    </div>
+    
+
+    <!-- Pricing Toggle -->
+    <div class="mb-3 form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="isFree" [(ngModel)]="isFree" 
+             [ngModelOptions]="{standalone: true}" (change)="togglePricing()">
+      <label class="form-check-label" for="isFree">Free Post</label>
+    </div>
+
+    <!-- Price Fields (shown only when not free) -->
+    <div *ngIf="!isFree">
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" class="form-control" id="price" formControlName="price" min="0">
+        <div *ngIf="postForm.get('price')?.invalid && postForm.get('price')?.touched" class="text-danger">
+          Valid price is required
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="currency" class="form-label">Currency</label>
+        <select class="form-control" id="currency" formControlName="currency">
+          <option value="">Select Currency</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+        </select>
+        <div *ngIf="postForm.get('currency')?.invalid && postForm.get('currency')?.touched" class="text-danger">
+          Currency is required
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+      <button type="button" class="btn btn-secondary" (click)="dismiss()">Close</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>

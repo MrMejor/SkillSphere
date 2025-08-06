@@ -1,0 +1,21 @@
+<div class="bg-dark h-100 py-3 sidebar-container" [class.hide-me]="!isActiveMenuHeader">
+  <h2 class="text-white mb-3 text-end w-100 px-3 border-bottom border-white pb-2">Menú</h2>
+  <p class="text-white text-end mb-3 px-4 d-flex flex-row flex-nowrap align-items-center justify-content-end column-gap-2 clickable "(click)="navigateToAllProduct()" data-bs-toggle="tooltip" title="Go to Home">
+    <span class="fs-6">Inicio</span> <i class="bi bi-house fs-5"></i>
+  </p>
+  <p class="text-white text-end mb-3 px-4 d-flex flex-row flex-nowrap align-items-center justify-content-end column-gap-2 clickable" (click)="showUserProfile()" data-bs-toggle="tooltip" title="Mi Profile">
+    <span class="fs-6">Mi perfil</span> <i class="bi bi-person fs-5"></i>
+  </p>
+  <p class="text-white text-end mb-3 px-4 d-flex flex-row flex-nowrap align-items-center justify-content-end column-gap-2 clickable" (click)="navigateToChangePassword()" data-bs-toggle="tooltip" title="Password">
+    <span class="fs-6">Mi contraseña</span> <i class="bi bi-shield fs-5"></i>
+  </p>
+  <p class="text-white text-end mb-3 px-4 d-flex flex-row flex-nowrap align-items-center justify-content-end column-gap-2 clickable" (click)="navigateToCart()" data-bs-toggle="tooltip" title="Cart">
+    <span class="fs-6">Productos</span> <i class="bi bi-cart fs-5"></i>
+  </p>
+  <p class="text-white text-end mb-3 px-4 d-flex flex-row flex-nowrap align-items-center justify-content-end column-gap-2 clickable" (click)="navigateToAddProduct()" data-bs-toggle="tooltip" title="Add Product">
+    <span class="fs-6">Agregar Producto</span> <i class="bi bi-plus fs-5"></i>
+  </p>
+  <p (click)="closeSession()" class="text-white text-end mb-3 px-4 d-flex flex-row flex-nowrap align-items-center justify-content-end column-gap-2 clickable" data-bs-toggle="tooltip" title="Cerra Session">
+    <span class="fs-6">Cerrar sesión</span> <i class="bi bi-power fs-5"></i>
+  </p>
+</div>

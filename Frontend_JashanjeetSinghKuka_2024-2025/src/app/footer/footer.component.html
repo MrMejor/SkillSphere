@@ -1,0 +1,119 @@
+<!-- Footer -->
+<footer class="bg-dark text-light py-4">
+  <div class="container">
+    <div class="row text-center text-md-start">
+      
+      <!-- Contact Info -->
+      <div class="col-md-6 mb-3">
+        <h5>Contact Me</h5>
+        <p>
+          <a href="mailto:Jashanjeet2001@gmail.com" class="text-white text-decoration-none">
+            <i class="fas fa-envelope"></i> Jashanjeet2001&#64;gmail.com
+          </a>
+        </p>
+        <p><i class="fas fa-phone"></i> +34 612 345 678</p>
+        <p><i class="fas fa-map-marker-alt"></i> Madrid, Spain</p>
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-6 mb-3 text-center">
+        <h5>Follow Me</h5>
+        <a href="https://www.linkedin.com/in/jashanjeet-singh-kuka-9846881b3" target="_blank" class="btn btn-outline-light btn-sm m-1">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/MrMejor" target="_blank" class="btn btn-outline-light btn-sm m-1">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://twitter.com/@MrMejor_" target="_blank" class="btn btn-outline-light btn-sm m-1">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com/jashan_284" target="_blank" class="btn btn-outline-light btn-sm m-1">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <!-- Info Modal Trigger -->
+        <button type="button" class="btn btn-outline-light btn-sm m-1" data-bs-toggle="modal" data-bs-target="#infoModal">
+          Info
+        </button>
+      </div>
+    </div>
+
+    <hr class="bg-light">
+
+    <!-- Policies -->
+    <div class="text-center mb-2">
+      <button class="btn btn-link text-light text-decoration-none" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</button>
+      |
+      <button class="btn btn-link text-light text-decoration-none" data-bs-toggle="modal" data-bs-target="#termsModal">Terms & Conditions</button>
+      |
+      <button class="btn btn-link text-light text-decoration-none" data-bs-toggle="modal" data-bs-target="#cookiesModal">Cookie Policy</button>
+    </div>
+
+    <p class="text-center small mb-0">© 2025 Jashanjeet Singh | All Rights Reserved</p>
+  </div>
+</footer>
+
+<!-- Reusable Modal Template -->
+<!-- Privacy Policy Modal -->
+<div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content text-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" id="privacyModalLabel">Privacy Policy</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Your privacy is important to us. We collect only necessary data to improve your experience and never share your personal data without consent.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Terms & Conditions Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content text-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" id="termsModalLabel">Terms & Conditions</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>By using SkillSphere, you agree to our terms. Content must be respectful and monetization rules apply to teachers as per our platform guidelines.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cookie Policy Modal -->
+<div class="modal fade" id="cookiesModal" tabindex="-1" aria-labelledby="cookiesModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content text-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cookiesModalLabel">Cookie Policy</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>We use cookies to improve user experience and analyze site traffic. You can choose to accept or reject cookies in your browser settings.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Info Modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="infoModalLabel">Information</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>This is a modal with additional information.</p>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button> -->
+         <button type="button" class="btn-close" (click)="closeModal('privacyModal')" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>
+

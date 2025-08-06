@@ -1,0 +1,49 @@
+.web-container {
+  width: 100%;
+  height: calc(100dvh - 70px); /* Full height minus header */
+  display: flex; /* Use flexbox for layout */
+}
+
+.sidebar-container {
+  width: 225px; /* Default width for sidebar */
+  height: 100%; /* Full height */
+  overflow-y: auto; /* Scrollable if content overflows */
+  background-color: #343a40; /* Sidebar background color */
+  color: white; /* Sidebar text color */
+  position: fixed; /* Fix sidebar position */
+  right: 0; /* Position sidebar on the right */
+  top: 70px; /* Below the header */
+  z-index: 1000; /* Ensure sidebar is above other content */
+  transition: width 0.3s ease-in-out, right 0.3s ease-in-out; /* Smooth transitions */
+}
+
+.sidebar-container.collapsed {
+  width: 64px; /* Collapsed width */
+}
+
+.main-content {
+  flex: 1; /* Take remaining space */
+  overflow-y: auto; /* Scrollable if content overflows */
+  padding: 20px; /* Add some padding */
+  transition: margin-right 0.3s ease-in-out; /* Smooth transition for margin change */
+}
+
+/* Mobile Styles */
+@media (max-width: 992px) {
+  .sidebar-container {
+    width: 225px; 
+    right: -225px; 
+  }
+
+  .sidebar-container.mobile-open {
+    right: 0; 
+  }
+
+  .main-content {
+    margin-right: 0; 
+  }
+}
+
+// .cart-sidebar {
+//   z-index: 1001; /* Ensure cart is above the sidebar */
+// }

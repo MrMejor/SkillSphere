@@ -1,0 +1,18 @@
+.card-box {
+  height: 100%;                    /* Stretch to full height of the column */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.75rem;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.post-image {
+  width: 100%;
+  height: 200px;                  /* Fixed image height */
+  object-fit: cover;              /* Maintain aspect ratio, cover space */
+  border-radius: 8px;
+}

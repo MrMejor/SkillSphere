@@ -1,0 +1,111 @@
+<div class="floating-clouds">
+  <div class="cloud" style="top: 150px; animation-duration: 50s;">SkillSphere</div>
+  <div class="cloud" style="top: 250px; left: 20%; animation-duration: 70s;"></div>
+  <div class="cloud" style="top: 350px; left: 50%; animation-duration: 80s;">SkillSphere</div>
+  <div class="cloud" style="top: 420px; left: 10%; animation-duration: 60s;"></div>
+</div>
+
+<div *ngIf="isLoading; else content">
+  <p>Loading posts...</p>
+</div>
+
+<ng-template #content>
+  <div *ngIf="error; else postList">
+    <p>{{ error }}</p>
+  </div>
+
+  <ng-template #postList>
+    <div class="centered-column">
+      <div *ngFor="let post of posts" class="post-card">
+        <div class="post-header">
+          <!-- Profile Image Container -->
+          <div class="profile-image-container rounded-circle overflow-hidden border border-white" style="width: 36px; height: 36px;">
+            <img *ngIf="post.profileImage"
+                [src]="post.profileImage"
+                alt="Foto de perfil"
+                class="w-100 h-100 object-fit-cover">
+            <div *ngIf="!post.profileImage"
+                class="w-100 h-100 bg-secondary d-flex align-items-center justify-content-center">
+              <i class="bi bi-person-fill text-white"></i>
+            </div>
+          </div>
+
+<p class="seller" (click)="visitProfile(post.sellerUsername)">{{ post.sellerUsername }}</p>
+          <p class="date">{{ post.createdAt | date:'mediumDate' }}</p>
+        </div>
+
+        <div class="post-image" (intersectionObserver)="loadImage(post.id)">
+          <!-- Show loading indicator only when actively loading -->
+          <div *ngIf="loadingImages[post.id]" class="image-loading">
+            Loading image...
+          </div>
+          
+          <!-- Show image when loaded -->
+          <img *ngIf="post.image && !loadingImages[post.id]" 
+               class="post-image"
+               [src]="post.image" 
+               alt="{{ post.name }}"
+               (error)="handleImageError(post)">
+               
+          <!-- Show fallback only when no image exists and not loading -->
+          <div *ngIf="(!post.image || post.imageError) && !loadingImages[post.id]" class="no-image">
+            No image available
+          </div>
+        </div>
+
+        <div class="post-info">
+          <h3>{{ post.name }}</h3>
+          <p class="description">{{ post.description }}</p>
+          
+          <div class="price-section">
+            <span class="price">{{ post.price }}{{ currencyMap[post.currency] }}</span>
+          </div>
+
+          <div class="post-stats">
+            <button (click)="toggleLike(post)" [class.liked]="post.isLiked">
+              ♥ {{ post.likes }}
+            </button>
+            <button (click)="toggleComments(post)">
+              💬 {{ post.commentCount }}
+            </button>
+            <button (click)="viewPost(post)">
+              👁️ View
+            </button>
+          </div>
+
+          <div class="post-actions">
+            <button class="btn-cart" (click)="addToCart(post)">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Comments Section - moved outside of post-info -->
+        <div *ngIf="post.showComments" class="comments-section">
+          <div *ngFor="let comment of post.comments" class="comment d-flex align-items-start gap-2 mb-2">
+            <!-- Profile Image for Comment User -->
+            <div class="rounded-circle overflow-hidden border border-white" style="width: 32px; height: 32px;">
+              <img *ngIf="comment.profileImage"
+                  [src]="comment.profileImage"
+                  alt="Commenter profile"
+                  class="w-100 h-100 object-fit-cover">
+              <div *ngIf="!comment.profileImage"
+                  class="w-100 h-100 bg-secondary d-flex align-items-center justify-content-center">
+                <i class="bi bi-person-fill text-white"></i>
+              </div>
+            </div>
+
+            <!-- Comment Text -->
+            <div class="flex-grow-1">
+              <strong>{{ comment.username }}</strong>: {{ comment.text }}
+            </div>
+          </div>
+
+          <div class="add-comment">
+            <input type="text" [(ngModel)]="post.newComment" placeholder="Add a comment...">
+            <button (click)="addComment(post, post.newComment)">Post</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </ng-template>
+</ng-template>

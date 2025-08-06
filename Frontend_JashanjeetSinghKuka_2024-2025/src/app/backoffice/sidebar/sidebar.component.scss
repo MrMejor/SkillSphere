@@ -1,0 +1,15 @@
+
+.sidebar-container {
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &.hide-me {
+    span, h2 {
+      display: none !important;
+    }
+  }
+
+}
+.clickable{
+  cursor: pointer;
+}

@@ -1,0 +1,63 @@
+<div class="profile-container">
+  <div *ngIf="isLoading; else profileContent">
+    <p>Loading profile...</p>
+  </div>
+
+  <ng-template #profileContent>
+    <!-- Profile Header Section -->
+    <div class="profile-header">
+      <div class="profile-image-container">
+        <img *ngIf="profileImage" 
+             [src]="profileImage" 
+             alt="Profile image"
+             class="profile-image">
+        <div *ngIf="!profileImage" class="no-image">
+          <i class="bi bi-person-fill"></i>
+        </div>
+      </div>
+
+      <div class="profile-info">
+        <h2>{{ profileUsername }}</h2>
+        <button *ngIf="!isOwnProfile" 
+                class="btn-message" 
+                (click)="sendMessage()">
+          Send Message
+        </button>
+      </div>
+    </div>
+
+    <!-- User Posts Section -->
+    <div class="user-posts">
+      <h3>Posts by {{ profileUsername }}</h3>
+      
+      <div *ngIf="userPosts.length === 0" class="no-posts">
+        <p>No posts available</p>
+      </div>
+
+      <div class="posts-grid">
+        <div *ngFor="let post of userPosts" class="post-card">
+          <div class="post-image-container">
+            <img *ngIf="post._image && !loadingImages[post.id]" 
+                 [src]="post._image" 
+                 alt="{{ post.title }}"
+                 class="post-image">
+            <div *ngIf="loadingImages[post.id]" class="image-loading">
+              Loading image...
+            </div>
+            <div *ngIf="!post._image && !loadingImages[post.id]" class="no-image">
+              <i class="bi bi-image"></i>
+            </div>
+          </div>
+          
+          <div class="post-info">
+            <h4>{{ post.title }}</h4>
+            <div *ngIf="post.content" class="description">
+              {{ post.content }}
+            </div>
+            <p class="date">{{ post.createdAt | date:'mediumDate' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

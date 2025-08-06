@@ -1,0 +1,73 @@
+<div *ngIf="isLoading; else content" class="loading-container text-center">
+  <p class="loading-text">Loading product details...</p>
+</div>
+
+<ng-template #content>
+  <div *ngIf="error; else productDetails" class="error-container text-danger text-center">
+    <p>{{ error }}</p>
+  </div>
+
+  <ng-template #productDetails>
+    <div class="product-container">
+      <!-- Product Image -->
+      <div class="product-image">
+        <div *ngIf="loadingImage" class="image-loading">
+          <span>Loading image...</span>
+        </div>
+        <img *ngIf="product.image && !loadingImage"
+             [src]="product.image"
+             alt="{{ product.name }}"
+             class="product-img"
+             (error)="handleImageError()">
+        <div *ngIf="(!product.image || imageError) && !loadingImage"
+             class="no-image">
+          <p>No image available</p>
+        </div>
+      </div>
+
+      <!-- Product Info -->
+      <div class="product-info">
+        <h2 class="product-title">{{ product.name }}</h2>
+        <p class="product-description">{{ product.description }}</p>
+        <p class="product-price">
+          Price: <span class="text-primary">{{ product.price | currency: currencyMap[product.currency] }}</span>
+        </p>
+        <p class="product-meta">Teacher: {{ product.sellerUsername }}</p>
+        <p class="product-meta">Currency: {{ product.currency }}</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="btn btn-primary" (click)="navigateToAllPost()">Go back</button>
+        <button class="btn btn-success" (click)="addToCart(product)">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Toggle Comments Button -->
+    <div class="comments-toggle text-center">
+      <button class="btn btn-outline-secondary btn-sm" (click)="toggleComments()">
+        {{ showComments ? 'Hide Comments' : 'Show Comments' }}
+      </button>
+    </div>
+
+    <!-- Comments Section -->
+    <div *ngIf="showComments" class="comments-section">
+      <div *ngIf="comments.length === 0" class="no-comments">
+        No comments yet.
+      </div>
+
+      <ul class="list-group mb-3">
+        <li *ngFor="let comment of comments" class="list-group-item">
+          <strong>{{ comment.username }}:</strong> {{ comment.text }}
+        </li>
+      </ul>
+
+      <div class="add-comment input-group mb-3">
+        <input [(ngModel)]="newComment"
+               class="form-control"
+               placeholder="Write a comment..." />
+        <button class="btn btn-primary" (click)="addComment()">Post</button>
+      </div>
+    </div>
+  </ng-template>
+</ng-template>

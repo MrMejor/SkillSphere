@@ -1,0 +1,44 @@
+<app-stats></app-stats>
+
+<div class="mt-5">
+  <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+    <h2 class="mb-2">Admin Control Panel</h2>
+    <span class="badge bg-secondary fs-6">Total Users: {{ userSummaries.length }}</span>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover table-borderless align-middle shadow-sm rounded overflow-hidden">
+      <thead class="table-light">
+        <tr>
+          <th scope="col">👤 Full Name</th>
+          <th scope="col">🧾 Username</th>
+          <th scope="col">📄 Posts</th>
+          <th scope="col">⚙️ Role</th>
+          <th scope="col" class="text-center">🛠️ Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of userSummaries" class="bg-white border-bottom">
+          <td>{{ user.fullName }}</td>
+          <td><code>{{ user.username }}</code></td>
+          <td><span class="badge bg-primary">{{ user.postCount }}</span></td>
+          <td>
+            <span 
+              [ngClass]="{
+                'badge bg-success': user.role === 'teacher',
+                'badge bg-info': user.role === 'student',
+                'badge bg-warning text-dark': user.role === 'admin'
+              }">
+              {{ user.role | titlecase }}
+            </span>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-outline-danger btn-sm px-3" (click)="deleteUser(user.username)">
+              <i class="bi bi-trash3-fill me-1"></i> Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
